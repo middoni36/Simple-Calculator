@@ -56,8 +56,12 @@ class Calculator(Tk):
 
         def Button_clicked(num):
             global sign
+
+
             if num != "=":
                 user_inp.insert(END,num)
+            if num == "CLR":
+                user_inp.delete(1.0,END)
             wholenum=user_inp.get("1.0",END).strip()
             if num == "*" or num=="+" or num=="/" or num=="-":
                 sign = str(num)
@@ -169,11 +173,14 @@ class Calculator(Tk):
         buttonplus.grid(row=4,column=0)
         buttonminus=Button(self,text="-",padx=pdx,pady=pdy,bg=color[11],command=lambda:Button_clicked(buttonminus.cget("text")))
         buttonminus.grid(row=4,column=1)
-        buttondiv=Button(self,text="/",padx=pdx,pady=pdy,bg=color[12]).grid(row=4,column=2)
+        buttondiv=Button(self,text="/",padx=pdx,pady=pdy,bg=color[12],command=lambda:Button_clicked(buttondiv.cget("text")))
+        buttondiv.grid(row=4,column=2)
         buttonmulti=Button(self,text="*",padx=pdx,pady=pdy,bg=color[13],command=lambda:Button_clicked(buttonmulti.cget("text")))
         buttonmulti.grid(row=4,column=3)
         buttonequa=Button(self,text="=",padx="110",pady=pdy,relief='solid',bg=color[14],command=lambda:Button_clicked(buttonequa.cget("text")))
         buttonequa.grid(row=5,column=0,columnspan=2)
+        buttoneclear = Button(self, text="CLR", padx="110", pady=pdy, relief='solid', bg=color[12],command=lambda: Button_clicked(buttoneclear.cget("text")))
+        buttoneclear.grid(row=5, column=2, columnspan=2)
 
 
 
